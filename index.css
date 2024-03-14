@@ -1,27 +1,68 @@
 * {
     box-sizing: border-box;
     user-select: none;
+    font-family: "Roboto Condensed", sans-serif;
 }
 
 html, body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    
+    width: 100%;  
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    background-color: #eee;
+}
+
+#title {
+    font-family: "Syncopate", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    padding: 10px 20px;
+    background: linear-gradient(
+    90deg,
+    hsl(0, 40%, 70%, 30%),
+    hsl(60, 40%, 70%, 30%),
+    hsl(120, 40%, 70%, 30%),
+    hsl(180, 40%, 70%, 30%),
+    hsl(240, 40%, 70%, 30%),
+    hsl(300, 40%, 70%, 30%),
+    hsl(360, 40%, 70%, 30%)
+  );
+    margin: 0;
+    width: 100vw;
 }
 
 header {
     display: flex;
-    padding: 20px; 
+    padding: 10px 20px; 
+    align-items: center;
 }
 
 .seed-color {
     width: 61px;
     height: 42px;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
 .mode {
     margin-left: 20px;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.scheme-size-control {
+    display: flex;
+    margin-left: 20px;
+}
+.scheme-size-control p {
+    margin-left: 10px;
 }
 
 .brightness-mode {
@@ -30,7 +71,80 @@ header {
 }
 
 .color-scheme {
-    height: 450px;
     display: grid;
-    grid-template-rows: 400px 50px;
+    flex-grow: 1;
+
+}
+
+.color-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    padding: 4em 0;
+}
+
+.color-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin-bottom: 0px;
+}
+
+h3 {
+    font-weight: 400;
+    margin-top: 10px;
+}
+p {
+    margin: 0;
+}
+
+/*----- slider control -----*/
+.slidecontainer {
+    width: 55px; /* Width of the outside container */
+    height: 20px;
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+  }
+  
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;  
+    background: darkgray;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px;
+    border-radius: 50%; 
+    border: 1px solid lightgrey;
+    background: white; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px;
+    border-radius: 50%;
+    background:blue; /* Green background */
+    cursor: pointer; /* Cursor on hover */
 }

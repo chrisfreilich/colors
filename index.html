@@ -1,10 +1,25 @@
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Stylesheets -->
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
+        <nav id="title">Color Scheme Generator</nav>
         <header>
+            <p id="instructions">Choose a starting color:</p>
             <input type="color" class="seed-color" id="seed-color" value="#ffffff">
+            <div class="scheme-size-control">
+                <p>colors: </p>
+                <p id="scheme-size">5</p>
+                <div class="slidecontainer">
+                    <input type="range" min="3" max="10" value="5" class="slider" id="input-scheme-size">
+                </div>
+            </div>
             <select name="mode" id="mode" class="mode" aria-label="Scheme mode">
                 <option value="monochrome" selected>Monochrome</option>
                 <option value="monochrome-dark">Monochrome Dark</option>
@@ -14,13 +29,11 @@
                 <option value="analogic-complement">Analogic-Complement</option>
                 <option value="triad">Triad</option>
                 <option value="quad">Quad</option>
-              </select>
+            </select>
             <div class="brightness-mode" id="brightness-mode">
             </div>
         </header>
-        <main>
-            <div id="color-scheme" class="color-scheme"></div>
-        </main>
+        <div id="color-scheme" class="color-scheme"></div>
         <script src="index.js" type="module"></script>
     </body>
 </html>
