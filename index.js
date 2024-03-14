@@ -8,7 +8,6 @@ const sliderEl = document.getElementById("input-scheme-size");
 const schemeSizeEl = document.getElementById("scheme-size");
 
 // defaults
-schemeSizeEl.innerHTML = sliderEl.value; 
 let brightnessMode = "light"
 renderBrightnessMode()
 
@@ -21,8 +20,10 @@ sliderEl.addEventListener('input', (event) => {
 })
 
 function updateColorScheme() {
-    // Hide instructions
+    // Display proper elements
     document.getElementById("instructions").style.display = "none"
+    document.getElementById("scheme-size-control").style.display = "flex"
+    document.getElementById("mode").style.display = "block"
 
     // Call the Color API
     fetch(`https://www.thecolorapi.com/scheme?hex=${seedColorEl.value.slice(1)}&count=${sliderEl.value}&mode=${modeEl.value}`)

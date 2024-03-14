@@ -40,12 +40,15 @@ body {
 
 header {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     padding: 10px 20px; 
     align-items: center;
 }
 
 .seed-color {
     width: 61px;
+    min-width: 61px;
     height: 42px;
     margin-left: 5px;
     cursor: pointer;
@@ -55,14 +58,14 @@ header {
     margin-left: 20px;
     border-radius: 5px;
     padding: 3px;
+    display: none;
 }
 
 .scheme-size-control {
-    display: flex;
-    margin-left: 20px;
+    display: none;
 }
 .scheme-size-control p {
-    margin-left: 10px;
+    margin-right: 5px;
 }
 
 .brightness-mode {
