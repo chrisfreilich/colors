@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <header>
+            <input type="color" class="seed-color" id="seed-color" value="#ffffff">
+            <select name="mode" id="mode" class="mode" aria-label="Scheme mode">
+                <option value="monochrome" selected>Monochrome</option>
+                <option value="monochrome-dark">Monochrome Dark</option>
+                <option value="monochrome-light">Monochrome Light</option>
+                <option value="analogic">Analogic</option>
+                <option value="complement">Complement</option>
+                <option value="analogic-complement">Analogic-Complement</option>
+                <option value="triad">Triad</option>
+                <option value="quad">Quad</option>
+              </select>
+            <div class="brightness-mode" id="brightness-mode">
+            </div>
+        </header>
+        <main>
+            <div id="color-scheme" class="color-scheme"></div>
+        </main>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>

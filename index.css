@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    
+}
+
+header {
+    display: flex;
+    padding: 20px; 
+}
+
+.seed-color {
+    width: 61px;
+    height: 42px;
+}
+
+.mode {
+    margin-left: 20px;
+}
+
+.brightness-mode {
+    width: 1.5rem;
+    margin: 0 0 0 auto;
+}
+
+.color-scheme {
+    height: 450px;
+    display: grid;
+    grid-template-rows: 400px 50px;
+}
