@@ -9,7 +9,10 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <nav id="title">Color Scheme Generator</nav>
+        <nav id="title">
+            <h1>Color Scheme Generator</h1>
+            <div class="brightness-mode" id="brightness-mode"></div>
+        </nav>
         <header>
             <input type="color" class="seed-color" id="seed-color" value="#ffffff">
             <p id="instructions"><-- Choose a starting color</p>
@@ -29,8 +32,6 @@
                 <div class="slidecontainer">
                     <input type="range" min="3" max="10" value="5" class="slider" id="input-scheme-size">
                 </div>
-            </div>
-            <div class="brightness-mode" id="brightness-mode">
             </div>
         </header>
         <div id="color-scheme" class="color-scheme"></div>

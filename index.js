@@ -4,8 +4,9 @@ const brightnessModeEl = document.getElementById("brightness-mode")
 const seedColorEl = document.getElementById("seed-color")
 const modeEl = document.getElementById("mode")
 const colorSchemeEl = document.getElementById("color-scheme")
-const sliderEl = document.getElementById("input-scheme-size");
-const schemeSizeEl = document.getElementById("scheme-size");
+const sliderEl = document.getElementById("input-scheme-size")
+const schemeSizeEl = document.getElementById("scheme-size")
+const titleEl = document.getElementById("title")
 
 // defaults
 let brightnessMode = "light"
@@ -47,7 +48,8 @@ function updateColorScheme() {
             colorSchemeEl.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`
             colorSchemeEl.innerHTML = html
 
-            // Update title bar colors
+            // Update title bar color
+            titleEl.style.backgroundColor = `${seedColorEl.value}4d`
             
         })
 }

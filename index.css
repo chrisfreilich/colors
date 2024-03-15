@@ -17,12 +17,10 @@ body {
     background-color: #eee;
 }
 
-#title {
-    font-family: "Syncopate", sans-serif;
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: white;
-    text-shadow: 2px 2px 5px black;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px 20px;
     background: linear-gradient(
     90deg,
@@ -93,6 +91,17 @@ header {
     align-items: center;
 }
 
+
+/* Typography */
+h1 {
+    font-family: "Syncopate", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    margin: 0;
+}
+
 h2 {
     margin-bottom: 0px;
 }
@@ -101,6 +110,7 @@ h3 {
     font-weight: 400;
     margin-top: 10px;
 }
+
 p {
     margin: 0;
 }
