@@ -1,5 +1,6 @@
 import { lightModeSVG, darkModeSVG } from '/svg.js'
 
+// HTML Element variables
 const headerEl = document.getElementById("header")
 const brightnessModeEl = document.getElementById("brightness-mode")
 const seedColorEl = document.getElementById("seed-color")
@@ -11,7 +12,6 @@ const titleEl = document.getElementById("title")
 
 // defaults
 let brightnessMode = "light"
-renderBrightnessMode()
 
 // Event Listeners
 seedColorEl.addEventListener('input', updateColorScheme)
@@ -24,43 +24,7 @@ brightnessModeEl.addEventListener('click', ()=> {
     brightnessMode = brightnessMode === "light" ? "dark" : "light"
     renderBrightnessMode()
 })
-colorSchemeEl.addEventListener('click', (event)=> {
-    // Write to clipboard
-    navigator.clipboard.writeText(event.target.id)
-
-    // Notify user of clipboard copy
-    const notifyEl = document.getElementById("clipboard")
-
-    // Set light/dark
-    if (brightnessMode === "light") {
-        notifyEl.classList.remove("dark")
-    } else {
-        notifyEl.classList.add("dark")
-    }
-    notifyEl.textContent = `${event.target.id} copied to clipboard`
-    notifyEl.style.position = "absolute"
-    notifyEl.style.display = "block"
-
-    // Calculate Y-position for notification popup
-    const mouseY = event.clientY;
-    const elementsAbove = document.querySelectorAll("nav, header");
-    let offsetDueToElementsAbove = 0;
-    elementsAbove.forEach((element) => {
-      offsetDueToElementsAbove += element.offsetHeight;
-    });
-    notifyEl.style.top = `${mouseY - offsetDueToElementsAbove - notifyEl.offsetHeight - 15}px`
-    
-    // Calculate X-position for notification popup
-    const mouseX = event.clientX;
-    if (mouseX > colorSchemeEl.offsetWidth / 2) {
-        notifyEl.style.left = `${mouseX - notifyEl.offsetWidth - 15}px`
-    } else {
-        notifyEl.style.left = `${mouseX + 15}px`
-    }    
-    
-    // Clear popup after 2 seconds
-    setTimeout(() => { notifyEl.style.display = "none" }, 2000)
-})
+colorSchemeEl.addEventListener('click', copyColorToClipboard)
 
 // Where the magic happens! Create the color scheme and update the screen elements
 function updateColorScheme() {
@@ -114,4 +78,43 @@ function renderBrightnessMode() {
         colorSchemeEl.classList.remove("dark")
         modeEl.classList.remove("dark")
     }
+}
+
+function copyColorToClipboard(event) {
+
+        // Write to clipboard
+        navigator.clipboard.writeText(event.target.id)
+    
+        // Notify user of clipboard copy
+        const notifyEl = document.getElementById("clipboard")
+    
+        // Set light/dark
+        if (brightnessMode === "light") {
+            notifyEl.classList.remove("dark")
+        } else {
+            notifyEl.classList.add("dark")
+        }
+        notifyEl.textContent = `${event.target.id} copied to clipboard`
+        notifyEl.style.position = "absolute"
+        notifyEl.style.display = "block"
+    
+        // Calculate Y-position for notification popup
+        const mouseY = event.clientY;
+        const elementsAbove = document.querySelectorAll("nav, header");
+        let offsetDueToElementsAbove = 0;
+        elementsAbove.forEach((element) => {
+          offsetDueToElementsAbove += element.offsetHeight;
+        });
+        notifyEl.style.top = `${mouseY - offsetDueToElementsAbove - notifyEl.offsetHeight - 15}px`
+        
+        // Calculate X-position for notification popup
+        const mouseX = event.clientX;
+        if (mouseX > colorSchemeEl.offsetWidth / 2) {
+            notifyEl.style.left = `${mouseX - notifyEl.offsetWidth - 15}px`
+        } else {
+            notifyEl.style.left = `${mouseX + 15}px`
+        }    
+        
+        // Clear popup after 2 seconds
+        setTimeout(() => { notifyEl.style.display = "none" }, 2000)
 }
