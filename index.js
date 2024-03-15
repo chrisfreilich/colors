@@ -25,6 +25,7 @@ brightnessModeEl.addEventListener('click', ()=> {
     renderBrightnessMode()
 })
 colorSchemeEl.addEventListener('click', copyColorToClipboard)
+window.addEventListener("resize", setSchemeColumns);
 
 // Where the magic happens! Create the color scheme and update the screen elements
 function updateColorScheme() {
@@ -51,16 +52,14 @@ function updateColorScheme() {
                             </div>
                         </div>`
             }
-            let numColumns = sliderEl.value < 6 ? sliderEl.value : Math.ceil(sliderEl.value / 2)
-            colorSchemeEl.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`
+            setSchemeColumns()
             colorSchemeEl.innerHTML = html
 
             // Add popup elements
             colorSchemeEl.innerHTML += `<div class="notification" id="clipboard"></div>`
 
             // Update title bar color
-            titleEl.style.backgroundColor = `${seedColorEl.value}4d`
-            
+            titleEl.style.backgroundColor = `${seedColorEl.value}4d`            
         })
 }
 
@@ -117,4 +116,32 @@ function copyColorToClipboard(event) {
         
         // Clear popup after 2 seconds
         setTimeout(() => { notifyEl.style.display = "none" }, 2000)
+}
+
+function setSchemeColumns() {
+
+    // Number of columns depends on number of total colors in the
+    // scheme as well as current width of the element. Because
+    // we're allowing two rows of colors when it makes sense,
+    // using media queries doesn't work.
+    let numColumns
+    let numColors = sliderEl.value
+
+    if (colorSchemeEl.offsetWidth > 800) {
+        numColumns = numColors < 6 ? numColors : 
+                     Math.ceil(numColors / 2)                
+    } else if (colorSchemeEl.offsetWidth > 600) {
+        numColumns = numColors < 5 ? numColors  : 
+                     numColors > 8 ? 1          : 
+                     Math.ceil(numColors / 2)  
+    } else if (colorSchemeEl.offsetWidth > 400) {
+        numColumns = numColors < 4 ? numColors  : 
+                     numColors > 6 ? 1          : 
+                     Math.ceil(numColors / 2)  
+    } else {
+        numColumns = 1
+    }
+
+    colorSchemeEl.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`
+
 }
