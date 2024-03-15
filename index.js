@@ -42,6 +42,7 @@ function updateColorScheme() {
                 const colorCode = color.hex.value
                 const textColor = color.hsl.l < 70 ? "#FFFFFF" : "#000000"
                 const colorName = color.name.value
+                console.log(color)
                 html += `<div class='color-block' id='${colorCode}' 
                             style='background-color: ${colorCode}; color: ${textColor}'>
                             <div class="color-info">
@@ -68,8 +69,10 @@ function renderBrightnessMode() {
     if (brightnessMode === "dark") {
         headerEl.classList.add("dark")
         colorSchemeEl.classList.add("dark")
+        modeEl.classList.add("dark")
     } else {
         headerEl.classList.remove("dark")
         colorSchemeEl.classList.remove("dark")
+        modeEl.classList.remove("dark")
     }
 }
