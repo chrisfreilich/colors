@@ -24,6 +24,30 @@ brightnessModeEl.addEventListener('click', ()=> {
     brightnessMode = brightnessMode === "light" ? "dark" : "light"
     renderBrightnessMode()
 })
+colorSchemeEl.addEventListener('click', (event)=> {
+    // Write to clipboard
+    navigator.clipboard.writeText(event.target.id)
+
+    // Notify user of clipboard copy
+    
+
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+    const elementsAbove = document.querySelectorAll("nav, header");
+    let offsetDueToElementsAbove = 0;
+    elementsAbove.forEach((element) => {
+      offsetDueToElementsAbove += element.offsetHeight;
+    });
+
+    const notifyEl = document.getElementById("clipboard")
+    notifyEl.textContent = `${event.target.id} copied to clipboard`
+    notifyEl.style.position = "absolute"
+    notifyEl.style.display = "block"
+    notifyEl.style.left = `${mouseX}px`
+    notifyEl.style.top = `${mouseY - offsetDueToElementsAbove - notifyEl.offsetHeight - 15}px`
+    
+    setTimeout(() => { notifyEl.style.display = "none" }, 2000)
+})
 
 // Where the magic happens! Create the color scheme and update the screen elements
 function updateColorScheme() {
@@ -42,7 +66,6 @@ function updateColorScheme() {
                 const colorCode = color.hex.value
                 const textColor = color.hsl.l < 70 ? "#FFFFFF" : "#000000"
                 const colorName = color.name.value
-                console.log(color)
                 html += `<div class='color-block' id='${colorCode}' 
                             style='background-color: ${colorCode}; color: ${textColor}'>
                             <div class="color-info">
@@ -54,6 +77,9 @@ function updateColorScheme() {
             let numColumns = sliderEl.value < 6 ? sliderEl.value : Math.ceil(sliderEl.value / 2)
             colorSchemeEl.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`
             colorSchemeEl.innerHTML = html
+
+            // Add popup elements
+            colorSchemeEl.innerHTML += `<div class="notification" id="clipboard"></div>`
 
             // Update title bar color
             titleEl.style.backgroundColor = `${seedColorEl.value}4d`
