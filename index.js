@@ -29,23 +29,36 @@ colorSchemeEl.addEventListener('click', (event)=> {
     navigator.clipboard.writeText(event.target.id)
 
     // Notify user of clipboard copy
-    
+    const notifyEl = document.getElementById("clipboard")
 
-    const mouseX = event.clientX;
+    // Set light/dark
+    if (brightnessMode === "light") {
+        notifyEl.classList.remove("dark")
+    } else {
+        notifyEl.classList.add("dark")
+    }
+    notifyEl.textContent = `${event.target.id} copied to clipboard`
+    notifyEl.style.position = "absolute"
+    notifyEl.style.display = "block"
+
+    // Calculate Y-position for notification popup
     const mouseY = event.clientY;
     const elementsAbove = document.querySelectorAll("nav, header");
     let offsetDueToElementsAbove = 0;
     elementsAbove.forEach((element) => {
       offsetDueToElementsAbove += element.offsetHeight;
     });
-
-    const notifyEl = document.getElementById("clipboard")
-    notifyEl.textContent = `${event.target.id} copied to clipboard`
-    notifyEl.style.position = "absolute"
-    notifyEl.style.display = "block"
-    notifyEl.style.left = `${mouseX}px`
     notifyEl.style.top = `${mouseY - offsetDueToElementsAbove - notifyEl.offsetHeight - 15}px`
     
+    // Calculate X-position for notification popup
+    const mouseX = event.clientX;
+    if (mouseX > colorSchemeEl.offsetWidth / 2) {
+        notifyEl.style.left = `${mouseX - notifyEl.offsetWidth - 15}px`
+    } else {
+        notifyEl.style.left = `${mouseX + 15}px`
+    }    
+    
+    // Clear popup after 2 seconds
     setTimeout(() => { notifyEl.style.display = "none" }, 2000)
 })
 

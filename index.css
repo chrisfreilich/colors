@@ -98,7 +98,7 @@ header {
     background-color: white;
     color: black;
     border: 2px solid black;
-    box-shadow: 2px 2px 4px darkgray;
+    box-shadow: 2px 2px 6px rgb(85, 85, 85);
     display: none;
     padding: 5px 20px;
 }
@@ -106,6 +106,7 @@ header {
 .dark {
     background-color: #333;
     color: whitesmoke;
+    border-color: whitesmoke;
 }
 
 /* Typography */
