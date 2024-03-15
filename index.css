@@ -54,6 +54,7 @@ header {
 
 .mode {
     margin-left: 20px;
+    margin-right: 20px;
     border-radius: 5px;
     padding: 3px;
     display: none;
@@ -91,6 +92,10 @@ header {
     align-items: center;
 }
 
+.dark {
+    background-color: #333;
+    color: whitesmoke;
+}
 
 /* Typography */
 h1 {
@@ -117,11 +122,12 @@ p {
 
 /*----- slider control -----*/
 .slidecontainer {
-    width: 55px; /* Width of the outside container */
+    width: 155px; /* Width of the outside container */
     height: 20px;
     display: flex;
     align-items: center;
     padding-top: 5px;
+    margin-left: 10px;
   }
   
 /* The slider itself */
@@ -146,8 +152,8 @@ p {
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 15px; /* Set a specific slider handle width */
-    height: 15px;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px;
     border-radius: 50%; 
     border: 1px solid lightgrey;
     background: white; /* Green background */
@@ -155,9 +161,9 @@ p {
 }
 
 .slider::-moz-range-thumb {
-    width: 15px; /* Set a specific slider handle width */
-    height: 15px;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px;
     border-radius: 50%;
-    background:blue; /* Green background */
+    background:white; 
     cursor: pointer; /* Cursor on hover */
 }

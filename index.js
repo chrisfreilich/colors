@@ -1,5 +1,6 @@
 import { lightModeSVG, darkModeSVG } from '/svg.js'
 
+const headerEl = document.getElementById("header")
 const brightnessModeEl = document.getElementById("brightness-mode")
 const seedColorEl = document.getElementById("seed-color")
 const modeEl = document.getElementById("mode")
@@ -15,11 +16,16 @@ renderBrightnessMode()
 // Event Listeners
 seedColorEl.addEventListener('input', updateColorScheme)
 modeEl.addEventListener('input', updateColorScheme)
-sliderEl.addEventListener('input', (event) => { 
-        schemeSizeEl.innerHTML = event.target.value 
-        updateColorScheme()
+sliderEl.addEventListener('input', () => { 
+    schemeSizeEl.innerHTML = sliderEl.value 
+    updateColorScheme()
+})
+brightnessModeEl.addEventListener('click', ()=> {
+    brightnessMode = brightnessMode === "light" ? "dark" : "light"
+    renderBrightnessMode()
 })
 
+// Where the magic happens! Create the color scheme and update the screen elements
 function updateColorScheme() {
     // Display proper elements
     document.getElementById("instructions").style.display = "none"
@@ -54,8 +60,16 @@ function updateColorScheme() {
         })
 }
 
+// Set classes and icons to represent light vs. dark mode
 function renderBrightnessMode() {
     brightnessModeEl.innerHTML = brightnessMode !== "light" ? lightModeSVG : darkModeSVG
 
     // set classes here
+    if (brightnessMode === "dark") {
+        headerEl.classList.add("dark")
+        colorSchemeEl.classList.add("dark")
+    } else {
+        headerEl.classList.remove("dark")
+        colorSchemeEl.classList.remove("dark")
+    }
 }
